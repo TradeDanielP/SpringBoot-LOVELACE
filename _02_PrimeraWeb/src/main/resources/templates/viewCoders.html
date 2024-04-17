@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/styles/style.css}">
+    <title>View Coders</title>
+</head>
+<body>
+    <h1 class="text-center fw-bold my-5">CODERS LIST</h1>
+    
+    <div class="container d-flex flex-column align-items-center">
+
+        <a href="/form" class="btn btn-secondary mb-3 align-self-end">Create Coder</a>
+
+        <table class="table table-striped table-dark table-hover">
+
+            <thead>
+              <tr>
+                <th scope="col">#ID</th>
+                <th scope="col">NAME</th>
+                <th scope="col">CLAN</th>
+                <th scope="col">AGE</th>
+                <th scope="col">ACTIONS</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+                <tr class="table-info" th:each=" coder : ${listCoders}">
+                    <td scope="row" th:text="${coder.id}"></td>
+                    <td th:text="${coder.name}"></td>
+                    <td th:text="${coder.clan}"></td>
+                    <td th:text="${coder.age}"></td>
+                    <td>
+                        <div class="d-flex gap-2">
+                            <a href="#" class="btn btn-primary">Edit</a>
+                            <a href="#" class="btn btn-danger">Delete</a>
+                        </div> 
+                    </td>
+                </tr>
+            </tbody>
+
+          </table>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+</body>
+</html>
