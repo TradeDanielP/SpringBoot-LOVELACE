@@ -20,7 +20,7 @@ public class ProductService implements IProductService{
 
     @Override
     public Product save(Product objProduct) {
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
+        return this.objRepository.save(objProduct);
     }
 
     @Override
@@ -30,20 +30,19 @@ public class ProductService implements IProductService{
 
     @Override
     public Product getById(Long id) {
-
-        throw new UnsupportedOperationException("Unimplemented method 'getById'");
+        return this.objRepository.findById(id).orElseThrow(null);
     }
 
     @Override
-    public boolean delete(Long id) {
-
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+    public void delete(Long id) {
+        Product product = this.objRepository.findById(id).orElseThrow();
+        
+        this.objRepository.delete(product);
     }
 
     @Override
     public Product update(Product objProduct) {
-
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+        return this.objRepository.save(objProduct);
     }
     
 
