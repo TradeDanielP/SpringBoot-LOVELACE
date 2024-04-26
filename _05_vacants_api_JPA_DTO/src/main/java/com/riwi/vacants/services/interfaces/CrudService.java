@@ -1,0 +1,16 @@
+package com.riwi.vacants.services.interfaces;
+
+import org.springframework.data.domain.Page;
+
+//RQ = Request - RS = Response - ID = tipo de la llave primaria de la entidad
+public interface CrudService<RQ,RS,ID> {
+
+   public void delete(ID id);
+
+    public RS create(RQ request);
+
+    RS update(ID ID, RQ Request);
+
+    Page<RS> getAll(int page, int size); 
+    
+}
