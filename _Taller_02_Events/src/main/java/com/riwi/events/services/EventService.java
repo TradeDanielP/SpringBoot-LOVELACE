@@ -1,8 +1,8 @@
 package com.riwi.events.services;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.riwi.events.entites.Event;
@@ -24,8 +24,10 @@ public class EventService implements IEventService{
     }
 
     @Override
-    public List<Event> getAll() {
-        return this.objRepository.findAll();
+    public Page<Event> getAll(int page, int size) {
+        if (page < 0) page = 0;
+        PageRequest pagination = PageRequest.of(page, size);
+        return this.objRepository.findAll(pagination);
     }
 
     @Override
