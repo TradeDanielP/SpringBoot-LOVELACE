@@ -2,7 +2,7 @@ package com.riwi.vacants.utils.dto.response;
 
 import java.util.List;
 
-import com.riwi.vacants.entities.Vacant;
+import com.riwi.vacants.entities.Company;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,7 +19,11 @@ public class CompanyResponse {
     private String name;
     private String location;
     private String contact;
-    private List<Vacant> vacants;
+    private List<VacantToCompanyResponse> vacants;
+    public CompanyResponse save(Company company) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'save'");
+    }
 
     
 }

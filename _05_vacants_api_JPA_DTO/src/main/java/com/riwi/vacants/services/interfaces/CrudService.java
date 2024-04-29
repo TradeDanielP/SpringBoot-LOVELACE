@@ -12,5 +12,7 @@ public interface CrudService<RQ,RS,ID> {
     RS update(ID ID, RQ Request);
 
     Page<RS> getAll(int page, int size); 
+
+    
     
 }
