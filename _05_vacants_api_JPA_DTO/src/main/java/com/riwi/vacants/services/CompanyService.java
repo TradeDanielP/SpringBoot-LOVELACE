@@ -1,7 +1,6 @@
 package com.riwi.vacants.services;
 
 import java.util.ArrayList;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
