@@ -16,6 +16,7 @@ import com.riwi.vacants.services.interfaces.ICompanyService;
 import com.riwi.vacants.utils.dto.request.CompanyRequest;
 import com.riwi.vacants.utils.dto.response.CompanyResponse;
 import com.riwi.vacants.utils.dto.response.VacantToCompanyResponse;
+import com.riwi.vacants.utils.exceptions.IdNotFoundException;
 
 import lombok.AllArgsConstructor;
 
@@ -28,7 +29,8 @@ public class CompanyService implements ICompanyService {
 
     @Override
     public void delete(String id) {
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+        Company company = this.find(id);
+        this.objRepository.delete(company);
     }
 
     @Override
@@ -40,7 +42,12 @@ public class CompanyService implements ICompanyService {
 
     @Override
     public CompanyResponse update(String ID, CompanyRequest Request) {
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+        // Buscamos la compañia con el id
+        Company company = this.find(ID);
+        // Llenamos la compañia con los nuevos datos a la vez que lo convertimos
+        Company companyUpdate = this.requestToCompany(Request, company);
+        // Guardamos la compañia actualizada y convertimos a la respuesta
+        return this.entityToResponse(this.objRepository.save(companyUpdate));
     }
 
     @Override
@@ -62,7 +69,8 @@ public class CompanyService implements ICompanyService {
     }
 
     private Company find(String id){
-        return this.objRepository.findById(id).orElseThrow();
+        return this.objRepository.findById(id).orElseThrow(()-> 
+            new IdNotFoundException("Company"));
     }
 
     // Este metodo se encarga de cpnvertir un objeto Company a CompanyResponse
