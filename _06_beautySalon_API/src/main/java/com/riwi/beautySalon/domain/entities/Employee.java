@@ -21,11 +21,11 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Entity(name="employee")
+@Entity( name = "employee")
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,9 +38,10 @@ public class Employee {
     private String email;
     @Column(length = 20)
     private String phone;
-    @Column(nullable = false)
+    @Column(nullable = false, length = 50)
     @Enumerated(EnumType.STRING)
     private RoleEmployee role;
+
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
@@ -50,5 +51,6 @@ public class Employee {
         cascade = CascadeType.ALL,
         orphanRemoval = false
     )
-    private List<Appoiment> appoiments;
+    private List<Appointment> appointments;
+    
 }

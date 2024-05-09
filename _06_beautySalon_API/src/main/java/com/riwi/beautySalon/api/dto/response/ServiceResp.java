@@ -12,10 +12,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ServiceResp {
-    
     private Long id;
     private String name;
     private String description;
     private BigDecimal price;
-
 }

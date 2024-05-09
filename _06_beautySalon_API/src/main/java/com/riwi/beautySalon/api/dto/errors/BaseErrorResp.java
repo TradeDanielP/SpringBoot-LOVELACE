@@ -8,12 +8,11 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 @Data
+@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
-@SuperBuilder
+/*Serializable clase especial para responder por http */
 public class BaseErrorResp implements Serializable {
-    
     private String status;
     private Integer code;
-
 }

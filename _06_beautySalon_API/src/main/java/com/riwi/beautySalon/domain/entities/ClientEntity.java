@@ -20,16 +20,15 @@ import lombok.ToString;
 @Entity(name = "client")
 @Data
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class ClientEntity {
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(length = 100,nullable = false)
+    @Column(length = 100, nullable = false)
     private String firstName;
-    @Column(length = 100,nullable = false)
+    @Column(length = 100, nullable = false)
     private String lastName;
     @Column(length = 20)
     private String phone;
@@ -37,12 +36,12 @@ public class ClientEntity {
     private String email;
 
     @ToString.Exclude
-    @EqualsAndHashCode.Exclude
+    @EqualsAndHashCode.Exclude // @121312312
     @OneToMany(
         fetch = FetchType.EAGER,
         mappedBy = "client",
         cascade = CascadeType.ALL,
-        orphanRemoval = false
+        orphanRemoval = false  
     )
-    private List<Appoiment> appoiments;
+    private List<Appointment> appointments;
 }

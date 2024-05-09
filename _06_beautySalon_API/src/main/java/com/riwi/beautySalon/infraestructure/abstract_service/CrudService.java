@@ -1,4 +1,4 @@
-package com.riwi.beautySalon.infrastructure.abstract_service;
+package com.riwi.beautySalon.infraestructure.abstract_service;
 
 import org.springframework.data.domain.Page;
 
@@ -15,5 +15,4 @@ public interface CrudService <RQ,RS,ID> {
     public void delete(ID id);
 
     public Page<RS> getAll(int page, int size, SortType sort);
-
 }

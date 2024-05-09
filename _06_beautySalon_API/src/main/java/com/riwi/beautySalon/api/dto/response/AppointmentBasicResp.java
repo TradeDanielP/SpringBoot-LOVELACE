@@ -9,15 +9,13 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
-public class AppoimentBasicResp {
-    
+@NoArgsConstructor
+public class AppointmentBasicResp {
     private Long id;
     private LocalDateTime dateTime;
     private Integer duration;
     private String comments;
     private ServiceResp service;
-    private EmployeeResp employee;
-
+    private EmployeeResp employee; 
 }

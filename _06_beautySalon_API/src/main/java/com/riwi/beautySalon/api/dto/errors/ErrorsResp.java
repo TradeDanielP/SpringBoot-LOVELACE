@@ -11,11 +11,9 @@ import lombok.experimental.SuperBuilder;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
+@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
-@SuperBuilder
 public class ErrorsResp extends BaseErrorResp{
-    
-    private List<Map<String,String>> errors;
-
+    private List<Map<String,String>> errors; 
 }

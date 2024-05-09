@@ -16,13 +16,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity(name = "appoiment")
+@Entity(name = "appointment")
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Appoiment {
-    
+public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,11 +29,11 @@ public class Appoiment {
     private LocalDateTime dateTime;
     @Column(nullable = false)
     private Integer duration;
-    @Lob
+    @Lob // -> Text
     private String comments;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "client_id",referencedColumnName = "id")
+    @JoinColumn(name = "client_id" , referencedColumnName = "id")
     private ClientEntity client;
 
     @ManyToOne(fetch = FetchType.LAZY)

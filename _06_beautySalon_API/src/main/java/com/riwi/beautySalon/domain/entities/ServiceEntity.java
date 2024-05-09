@@ -19,29 +19,39 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Entity(name = "service")
+@Entity( name = "service")
 @Data
-@Builder
+@Builder //Patron de diseño para clases
+/**
+ *  Clase clase= new Clase
+ *  clase.setName("sadsa")
+ *  clase.setAge(23); 
+ * 
+ *  Clase.builder()
+ *  .name("dsadsa")
+ *  .age(12)
+ *  .build();
+ */
 @AllArgsConstructor
 @NoArgsConstructor
 public class ServiceEntity {
-    @Id
+    @Id // -> 1
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(length = 100, nullable = false)
     private String name;
-    @Lob //Esta columna sera de tipo text
+    @Lob // -> Mapea a Text
     private String description;
     @Column(nullable = false)
     private BigDecimal price;
 
     @ToString.Exclude
-    @EqualsAndHashCode.Exclude
+    @EqualsAndHashCode.Exclude //Para no crear otro espacio de memoria
     @OneToMany(
+        cascade = CascadeType.ALL,
         fetch = FetchType.EAGER,
         mappedBy = "service",
-        cascade = CascadeType.ALL,
         orphanRemoval = false
     )
-    private List<Appoiment> appoiments;
+    private List<Appointment> appointments;
 }

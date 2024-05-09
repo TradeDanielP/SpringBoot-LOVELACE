@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.riwi.beautySalon.api.dto.request.ServiceReq;
 import com.riwi.beautySalon.api.dto.response.ServiceResp;
-import com.riwi.beautySalon.infrastructure.abstract_service.IServiceService;
+import com.riwi.beautySalon.infraestructure.abstract_service.IServiceService;
 import com.riwi.beautySalon.utils.enums.SortType;
 
 import lombok.AllArgsConstructor;
@@ -27,7 +27,7 @@ import lombok.AllArgsConstructor;
 @RequestMapping(path = "/services")
 @AllArgsConstructor
 public class ServiceController {
-
+    
     private final IServiceService service;
 
     @GetMapping
@@ -36,13 +36,14 @@ public class ServiceController {
         @RequestParam(defaultValue = "5") int size,
         @RequestHeader(required = false) SortType sortType
     ){
+
         if (Objects.isNull(sortType)) sortType = SortType.NONE;
         
-        return ResponseEntity.ok(this.service.getAll(page - 1, size, sortType));
+        return ResponseEntity.ok(this.service.getAll(page -1, size, sortType));
     }
 
     @GetMapping(path = "/{id}")
-    public ResponseEntity<ServiceResp> get(@PathVariable Long id){
+    public ResponseEntity<ServiceResp> get(@PathVariable Long id) {
         return ResponseEntity.ok(this.service.get(id));
     }
 
@@ -56,7 +57,7 @@ public class ServiceController {
     @PutMapping(path = "/{id}")
     public ResponseEntity<ServiceResp> update(
         @Validated @RequestBody ServiceReq request,
-        @PathVariable Long id
+        @PathVariable Long id 
     ){
         return ResponseEntity.ok(this.service.update(request, id));
     }
@@ -65,8 +66,7 @@ public class ServiceController {
     public ResponseEntity<ServiceResp> insert(
         @Validated @RequestBody ServiceReq request
     ){
-        return ResponseEntity.ok(this.service.create(request));
+        return  ResponseEntity.ok(this.service.create(request));
     }
 
-    
 }
