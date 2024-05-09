@@ -2,7 +2,6 @@ package com.riwi.beautySalon.api.dto.request;
 
 import java.time.LocalDateTime;
 
-import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
